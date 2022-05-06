@@ -6,15 +6,13 @@
 	String btn = request.getParameter("btn");
 	if (btn != null && !btn.isEmpty()) {
 		if(btn.equals("reset")){
-			for(int i = 0; i > 5; i++){
-				String userData[] = new String[5];
-				if(session.getAttribute(userData[i]) == null){
-					session.setAttribute("userData", userData[i]);
-				}
-			}
-			session.setAttribute("dataCount", 0);
+			session.invalidate();
 			
 		}
+		
+	}
+	if(btn == null){
+		session.invalidate();
 	}
 %>
 <!DOCTYPE html>

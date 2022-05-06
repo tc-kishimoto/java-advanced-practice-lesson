@@ -14,28 +14,36 @@
 	int count = 0;
 	
 	//セッションの初期化
-	for(int i = 0; i > 5; i++){
-		if(session.getAttribute(userData[i]) == null){
-			session.setAttribute("userData", userData[i]);
+	for(int i = 0; i < 5; i++){
+		if(session.getAttribute("userData" + i) == null){
+			session.setAttribute("userData" + i, userData[i]);
 		}
 	}
-	
 	
 	if(session.getAttribute("dataCount") == null){
 		session.setAttribute("dataCount", 0);
 	}
 	
-	
+	result = "";
 	
 	if (userId != null && !userId.isEmpty()) {
 		flag[0] = 1;
+		
+	}else{
+		result += "userIdが未入力です。<br>";
 	}
 	if (userName != null && !userName.isEmpty()) {
 		flag[1] = 1;
+		
+	}else{
+		result += "userNameが未入力です。<br>";
 	}
 	if (age != null && !age.isEmpty()) {
 		flag[2] = 1;
+		
 		userAge = Integer.parseInt(age);
+	}else{
+		result += "ageが未入力です。";
 	}
 	
 	if(flag[0] == 1 && flag[1] == 1 && flag[2] == 1){
@@ -43,7 +51,7 @@
 		if(count < 5){
 			User user = new User(userId, userName, userAge);
 			userData[count] = user.returnUserInfo();
-			session.setAttribute("userData", userData[count]);
+			session.setAttribute("userData" + count, userData[count]);
 			result = userData[count];
 			count++;
 			session.setAttribute("dataCount", count);
@@ -100,24 +108,14 @@ a.button {
     <span>現在の登録ユーザー</span><br>
 
     <%
-        // 現在のユーザー情報を表示
-        //for (User tempUser : users) {
-            //if (tempUser != null) {
-                // ユーザー情報を取得
-                // todo:
-                // 現在は変数のみ定義している。
-                // Userクラスの情報取得用メソッドを呼んだ値をセットするように修正。
-                //String msg = "";
-
-                // ユーザー情報表示
-                //out.println(msg);
-                //out.println("<br>");
-            //}
-        //}
-    	for(int i = 0; i > 5; i++){
-    		String msg = (String)session.getAttribute("userData");
+    	for(int i = 0; i < 5; i++){
+    		String msg = (String)session.getAttribute("userData" + i);
+    		if(msg == null){
+    			break;
+    		}
     		out.println(msg);
     		out.println("<br>");
+//     		
     	}
     %>
   </p>
