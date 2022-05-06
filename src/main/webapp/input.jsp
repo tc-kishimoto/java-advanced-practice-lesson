@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%
-    // 必要な処理を記述してください。
 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +22,7 @@ body {
     text-align: right;
 }
 </style>
+<% request.setCharacterEncoding("UTF-8"); %>
 </head>
 <body>
 
