@@ -1,8 +1,21 @@
+<%@ page import="entity.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%
-    // 必要な処理を記述してください。
-
+	request.setCharacterEncoding("UTF-8");
+	String btn = request.getParameter("btn");
+	if (btn != null && !btn.isEmpty()) {
+		if(btn.equals("reset")){
+			for(int i = 0; i > 5; i++){
+				String userData[] = new String[5];
+				if(session.getAttribute(userData[i]) == null){
+					session.setAttribute("userData", userData[i]);
+				}
+			}
+			session.setAttribute("dataCount", 0);
+			
+		}
+	}
 %>
 <!DOCTYPE html>
 <html>
