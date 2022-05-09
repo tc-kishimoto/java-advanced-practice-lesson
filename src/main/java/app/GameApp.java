@@ -10,7 +10,7 @@ public class GameApp {
 		
 	}
 	
-	public static String start(String name){
+	public String start(String name){
 		String mes = "";
 		mes = name + "さんと" + item + "でゲームを開始します";
 		return mes;
