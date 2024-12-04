@@ -12,8 +12,8 @@
     String result = "未実施";
 
     if (name != null && !name.isEmpty()) {
-    	// このif分の中で、GameAppクラスのstartメソッドを呼び出し、
-    	// 戻り値をresultに代入してください。
+    	app.GameApp gameApp1 = new app.GameApp ("テトリス");
+    	result = gameApp1.start(name);
     }
 %>
 <!DOCTYPE html>
